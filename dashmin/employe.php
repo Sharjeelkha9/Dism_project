@@ -2,7 +2,7 @@
 include "components/header.php";
 ?>
 <!-- Blank Start -->
-<div class="container-fluid pt-4 px-4">
+<div class="containe">
     <div class="row bg-light rounded mx-0">
         <div class="col-lg-12">
             <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add Employee</button>

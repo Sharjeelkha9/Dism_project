@@ -2,8 +2,8 @@
 include "components/header.php";
 ?>
 <!-- Blank Start -->
-<div class="container-fluid pt-4 px-4">
-    <div class="row bg-light rounded mx-0">
+<div class="containe">
+    <div class="bg-light rounded mx-0">
         <div class="col-lg-12">
             <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#addproduct">Add Products</button>
         </div>
@@ -18,7 +18,7 @@ if (empty($rows)) {
     echo "<h3 class='text-center'>Products not found in the table</h3>";
 } else {
     ?>
-    <div class="col-md-6 my-3 mx-3">
+    <div class="col-lg-6 col-sm-12 col-md-6 my-3 mx-3">
             <h3>ADD PRODUCTS</h3>
         </div>
     <table class="table">
