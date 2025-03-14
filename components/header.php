@@ -3,43 +3,45 @@ include("auth/auth.php")
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Home</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.png" />
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+	<!--===============================================================================================-->
 </head>
+
 <body class="animsition">
-	
+
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
@@ -55,8 +57,8 @@ include("auth/auth.php")
 
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
-					
-					<!-- Logo desktop -->		
+
+					<!-- Logo desktop -->
 					<a href="index.php" class="logo">
 						<h3 style="color: #333;"><b>ARTS</b> STORE</h3>
 					</a>
@@ -81,82 +83,86 @@ include("auth/auth.php")
 							<li>
 								<a href="feedback.php">Feedback</a>
 							</li>
-
 							<?php
-								if(!isset($_SESSION['username'])){
-?>
+							if (!isset($_SESSION['username'])) {
+							?>
 
 
-<li>
-								<a href="register.php">Sign Up</a>
-							</li>
-							<li>
-								<a href="login.php">Sign In</a>
-							</li>
-<?php						
+								<li>
+									<a href="register.php">Sign Up</a>
+								</li>
+								<li>
+									<a href="login.php">Sign In</a>
+								</li>
+							<?php
 
-							}else{
-								?>
-								
-							<li>
-								<a href="profile.php">Profile</a>
-							</li>
-							<li>
-								<a href="logout.php">logout</a>
-							</li>
-								<?php
+							} else {
+							?>
+
+								<li>
+									<a href="profile.php">Profile</a>
+								</li>
+								<li>
+									<a href="logout.php">logout</a>
+								</li>
+							<?php
 							}
 							?>
+							<?php if (isset($_SESSION['usertype']) && $_SESSION['usertype'] === 'admin') : ?>
+								<li>
+									<a href="dashmin/categories.php">Admin Panel</a>
+								</li>
+							<?php endif; ?>
 						</ul>
-					</div>	
+					</div>
 
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m">
 
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<?php
-						$quantityCount = 0;
-						if(isset($_SESSION['cart'])){
-							foreach($_SESSION['cart'] as $keys => $val){
-								$quantityCount=$quantityCount+$val['proquantity'];
-							}
-							echo $quantityCount;
-						}else{
-							echo $quantityCount;
-
-						}
-						?>">
+																																	$quantityCount = 0;
+																																	if (isset($_SESSION['cart'])) {
+																																		foreach ($_SESSION['cart'] as $keys => $val) {
+																																			$quantityCount = $quantityCount + $val['proquantity'];
+																																		}
+																																		echo $quantityCount;
+																																	} else {
+																																		echo $quantityCount;
+																																	}
+																																	?>">
 							<i class="zmdi zmdi-shopping-cart"></i>
 						</div>
 					</div>
 				</nav>
-			</div>	
+			</div>
 		</div>
 
 		<!-- Header Mobile -->
 		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->		
+			<!-- Logo moblie -->
 			<div class="logo-mobile">
-				<a href="index.php"><h3 style="color: #333;"><b>ARTS</b> STORE</h3></a>
+				<a href="index.php">
+					<h3 style="color: #333;"><b>ARTS</b> STORE</h3>
+				</a>
 			</div>
 
 			<!-- Icon header -->
 			<div class="wrap-icon-header flex-w flex-r-m">
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<?php
-						$quantityCount = 0;
-						if(isset($_SESSION['cart'])){
-							foreach($_SESSION['cart'] as $keys => $val){
-								$quantityCount=$quantityCount+$val['proquantity'];
-							}
-							echo $quantityCount;
-						}else{
-							echo $quantityCount;
-
-						}
-						?>">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
-					</div>
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="<?php
+																															$quantityCount = 0;
+																															if (isset($_SESSION['cart'])) {
+																																foreach ($_SESSION['cart'] as $keys => $val) {
+																																	$quantityCount = $quantityCount + $val['proquantity'];
+																																}
+																																echo $quantityCount;
+																															} else {
+																																echo $quantityCount;
+																															}
+																															?>">
+					<i class="zmdi zmdi-shopping-cart"></i>
+				</div>
+			</div>
 
 			<!-- Button show menu -->
 			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -196,35 +202,35 @@ include("auth/auth.php")
 					<a href="feedback.php">feedback</a>
 				</li>
 				<?php
-								if(!isset($_SESSION['username'])){
-?>
+				if (!isset($_SESSION['username'])) {
+				?>
 
 
-<li>
-								<a href="register.php">Sign Up</a>
-							</li>
-							<li>
-								<a href="login.php">Sign In</a>
-							</li>
-<?php						
+					<li>
+						<a href="register.php">Sign Up</a>
+					</li>
+					<li>
+						<a href="login.php">Sign In</a>
+					</li>
+				<?php
 
-							}else{
-								?>
-								
-							<li>
-								<a href="profile.php">Profile</a>
-							</li>
-							<li>
-								<a href="logout.php">logout</a>
-							</li>
-								<?php
-							}
-							?>
+				} else {
+				?>
+
+					<li>
+						<a href="profile.php">Profile</a>
+					</li>
+					<li>
+						<a href="logout.php">logout</a>
+					</li>
+				<?php
+				}
+				?>
 			</ul>
 		</div>
 
 		<!-- Modal Search -->
-		
+
 	</header>
 
 	<!-- Cart -->
@@ -241,42 +247,42 @@ include("auth/auth.php")
 					<i class="zmdi zmdi-close"></i>
 				</div>
 			</div>
-			
+
 			<div class="header-cart-content flex-w js-pscroll">
-			<ul class="header-cart-wrapitem w-full">
+				<ul class="header-cart-wrapitem w-full">
 					<?php
 					$subTotal = 0;
-					if(isset($_SESSION['cart'])){
-						foreach($_SESSION['cart'] as $cartKeys => $cartValues){
-							$subTotal += $cartValues['proquantity']*$cartValues['proprice'];
-							?>
+					if (isset($_SESSION['cart'])) {
+						foreach ($_SESSION['cart'] as $cartKeys => $cartValues) {
+							$subTotal += $cartValues['proquantity'] * $cartValues['proprice'];
+					?>
 							<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="<?php echo $proaddress.$cartValues['proimage']?>" alt="IMG">
-						</div>
+								<div class="header-cart-item-img">
+									<img src="<?php echo $proaddress . $cartValues['proimage'] ?>" alt="IMG">
+								</div>
 
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-							<?php echo $cartValues['proname']?>
-							</a>
+								<div class="header-cart-item-txt p-t-8">
+									<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+										<?php echo $cartValues['proname'] ?>
+									</a>
 
-							<span class="header-cart-item-info">
-							<?php echo $cartValues['proquantity']?> x PKR: <?php echo $cartValues['proprice']?>
-							</span>
-						</div>
-					</li>
-							<?php
+									<span class="header-cart-item-info">
+										<?php echo $cartValues['proquantity'] ?> x PKR: <?php echo $cartValues['proprice'] ?>
+									</span>
+								</div>
+							</li>
+					<?php
 						}
 					}
 					?>
-					
 
-				
+
+
 				</ul>
-				
+
 				<div class="w-full">
 					<div class="header-cart-total w-full p-tb-40">
-					Total: PKR: <?php  echo $subTotal?>
+						Total: PKR: <?php echo $subTotal ?>
 					</div>
 
 					<div class="header-cart-buttons flex-w w-full">
